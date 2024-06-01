@@ -9,7 +9,7 @@ from langchain_openai import OpenAIEmbeddings
 from octoai.client import OctoAI
 from openai import OpenAI
 
-from advanced_app import encoded_img
+# from advanced_app import encoded_img
 from utils import format_docs, load_knowledge_base, load_llm, load_prompt
 
 load_dotenv()
@@ -60,13 +60,15 @@ if __name__ == "__main__":
             response = rag_chain.invoke(prompt)
             st.session_state.messages.append({"role": "assistant", "content": response})
             st.markdown(response)
-            video_gen_response = octoai_client.image_gen.generate_svd(
-                image=encoded_img(),
-                cfg_scale=5,
-                steps=20,
-                motion_scale=0.5,
-                noise_aug_strength=0.04,
-                num_videos=1,
-                fps=30,
-            )
-            st.write(video_gen_response.videos)
+            # video_gen_response = octoai_client.image_gen.generate_svd(
+            #     image=encoded_img(),
+            #     cfg_scale=5,
+            #     steps=20,
+            #     motion_scale=0.5,
+            #     noise_aug_strength=0.04,
+            #     num_videos=1,
+            #     fps=30,
+            # )
+            with open("generated_video3.mp4", "rb") as video_file:
+                video_bytes = video_file.read()
+            st.video(video_bytes)

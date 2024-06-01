@@ -12,4 +12,6 @@ transformers
 jupyter
 
 # for our product
+openai
 pandas
+streamlit

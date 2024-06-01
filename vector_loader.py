@@ -7,7 +7,7 @@ from langchain_openai import OpenAIEmbeddings
 #create a new file named vectorstore in your current directory.
 if __name__=="__main__":
         DB_FAISS_PATH = 'vectorstore/db_faiss'
-        loader=CSVLoader("data/listings.csv")
+        loader=CSVLoader("data/sampled_listings.csv")
         docs=loader.load()
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
         splits = text_splitter.split_documents(docs)

@@ -11,7 +11,7 @@ from utils import format_docs, load_knowledgeBase, load_llm, load_prompt
 load_dotenv()
 client = OpenAI()
 
-st.title("ChatGPT-like clone")
+st.title("casa.ai")
 
 if __name__ == "__main__":
     if "openai_model" not in st.session_state:

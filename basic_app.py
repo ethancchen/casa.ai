@@ -1,9 +1,11 @@
 import streamlit as st
 from dotenv import load_dotenv
 from openai import OpenAI
+import os
 
 load_dotenv()
 client = OpenAI()
+OCTO_API = os.getenv("OCTO_API_KEY")
 
 st.title("ChatGPT-like clone")
 

@@ -4,6 +4,8 @@ from langchain_community.vectorstores import FAISS
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import OpenAIEmbeddings
+from basic_app import OCTO_API
+import requests, base64
 
 
 # function to load the vectordatabase
@@ -38,6 +40,14 @@ def load_prompt():
 def format_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
 
+# Function for converting img
+def encoded_img():
+    img = requests.get(
+        "https://a0.muscache.com/im/pictures/29e0cc65-47dc-41ad-a279-978152ab2899.jpg?im_w=720").content
+    with open(img, "wb") as f:
+        encoded_img = base64.b64encode(f)
+    return encoded_img
+
 
 if __name__ == "__main__":
     sl.header("welcome to the 📝PDF bot")
@@ -61,3 +71,14 @@ if __name__ == "__main__":
 
         response = rag_chain.invoke(query)
         sl.write(response)
+
+        video_gen_response = OCTO_API.image_gen.generate_svd(
+            image=encoded_img(),
+            cfg_scale=5,
+            steps=20,
+            motion_scale=0.5,
+            noise_aug_strength=0.04,
+            num_videos=1,
+            fps=30
+        )
+        sl.write(video_gen_response.videos)

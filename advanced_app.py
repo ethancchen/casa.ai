@@ -8,7 +8,7 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import OpenAIEmbeddings
 
 from basic_app import OCTO_API
-from utils import format_docs, load_knowledgeBase, load_llm, load_prompt
+from utils import format_docs, load_knowledge_base, load_llm, load_prompt
 
 
 # Function for converting img
@@ -22,7 +22,7 @@ def encoded_img():
 if __name__ == "__main__":
     sl.header("welcome to the 📝PDF bot")
     sl.write("🤖 You can chat by Entering your queries ")
-    knowledgeBase = load_knowledgeBase()
+    knowledgeBase = load_knowledge_base()
     llm = load_llm()
     prompt = load_prompt()
 

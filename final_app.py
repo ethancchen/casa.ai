@@ -10,11 +10,12 @@ from octoai.client import OctoAI
 from openai import OpenAI
 
 from advanced_app import encoded_img
-from utils import format_docs, load_knowledgeBase, load_llm, load_prompt
+from utils import format_docs, load_knowledge_base, load_llm, load_prompt
 
 load_dotenv()
 client = OpenAI()
 OCTO_API_KEY = os.getenv("OCTO_API_KEY")
+octoai_client = OctoAI(OCTO_API_KEY)
 
 st.title("casa.ai")
 
@@ -26,7 +27,7 @@ if __name__ == "__main__":
         st.session_state.messages = []
 
     if "knowledge_base" not in st.session_state:
-        st.session_state["knowledge_base"] = load_knowledgeBase()
+        st.session_state["knowledge_base"] = load_knowledge_base()
 
     if "llm" not in st.session_state:
         st.session_state["llm"] = load_llm()
@@ -59,7 +60,7 @@ if __name__ == "__main__":
             response = rag_chain.invoke(prompt)
             st.session_state.messages.append({"role": "assistant", "content": response})
             st.markdown(response)
-            video_gen_response = OctoAI(OCTO_API_KEY).image_gen.generate_svd(
+            video_gen_response = octoai_client.image_gen.generate_svd(
                 image=encoded_img(),
                 cfg_scale=5,
                 steps=20,

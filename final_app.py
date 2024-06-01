@@ -1,14 +1,15 @@
+import os
+
 import streamlit as st
 from dotenv import load_dotenv
 from langchain_community.vectorstores import FAISS
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import OpenAIEmbeddings
-from openai import OpenAI
-from advanced_app import encoded_img
 from octoai.client import OctoAI
-import os
+from openai import OpenAI
 
+from advanced_app import encoded_img
 from utils import format_docs, load_knowledgeBase, load_llm, load_prompt
 
 load_dotenv()
@@ -56,15 +57,15 @@ if __name__ == "__main__":
             )
 
             response = rag_chain.invoke(prompt)
-            # stream = client.chat.completions.create(
-            #     model=st.session_state["openai_model"],
-            #     messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
-            #     stream=True,
-            # )
-            response = st.write(response)
-        st.session_state.messages.append({"role": "assistant", "content": response})
-
-        video_gen_response = OctoAI(OCTO_API_KEY).image_gen.generate_svd(
-            image=encoded_img(), cfg_scale=5, steps=20, motion_scale=0.5, noise_aug_strength=0.04, num_videos=1, fps=30
-        )
-        st.write(video_gen_response.videos)
+            st.session_state.messages.append({"role": "assistant", "content": response})
+            st.markdown(response)
+            video_gen_response = OctoAI(OCTO_API_KEY).image_gen.generate_svd(
+                image=encoded_img(),
+                cfg_scale=5,
+                steps=20,
+                motion_scale=0.5,
+                noise_aug_strength=0.04,
+                num_videos=1,
+                fps=30,
+            )
+            st.write(video_gen_response.videos)

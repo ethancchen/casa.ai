@@ -1,6 +1,6 @@
-from openai import OpenAI
 import streamlit as st
 from dotenv import load_dotenv
+from openai import OpenAI
 
 load_dotenv()
 client = OpenAI()
@@ -25,10 +25,7 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("assistant"):
         stream = client.chat.completions.create(
             model=st.session_state["openai_model"],
-            messages=[
-                {"role": m["role"], "content": m["content"]}
-                for m in st.session_state.messages
-            ],
+            messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
             stream=True,
         )
         response = st.write_stream(stream)

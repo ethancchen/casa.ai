@@ -1,0 +1,11 @@
+langchain-openai
+langchain
+langchain-text-splitters
+lxml
+octoai-sdk
+langchain-community
+faiss-cpu
+tiktoken
+transformers
+
+jupyter

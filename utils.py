@@ -9,7 +9,7 @@ import base64
 load_dotenv()
 
 # function to load the vectordatabase
-def load_knowledgeBase():
+def load_knowledge_base():
     embeddings = OpenAIEmbeddings()
     DB_FAISS_PATH = "vectorstore/db_faiss"
     db = FAISS.load_local(DB_FAISS_PATH, embeddings, allow_dangerous_deserialization=True)

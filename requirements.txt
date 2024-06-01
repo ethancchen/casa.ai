@@ -19,8 +19,6 @@ anyio==4.4.0
     #   httpx
     #   jupyter-server
     #   openai
-    #   starlette
-    #   watchfiles
 appnope==0.1.4
     # via ipykernel
 argon2-cffi==23.1.0
@@ -47,11 +45,15 @@ bleach==6.1.0
 blinker==1.8.2
     # via streamlit
 boto3==1.34.117
-    # via octoai-sdk
+    # via octoai
+boto3-stubs==1.34.117
+    # via types-boto3
 botocore==1.34.117
     # via
     #   boto3
     #   s3transfer
+botocore-stubs==1.34.94
+    # via boto3-stubs
 cachetools==5.3.3
     # via streamlit
 certifi==2024.2.2
@@ -60,19 +62,11 @@ certifi==2024.2.2
     #   httpx
     #   requests
 cffi==1.16.0
-    # via
-    #   argon2-cffi-bindings
-    #   soundfile
+    # via argon2-cffi-bindings
 charset-normalizer==3.3.2
     # via requests
-chevron==0.14.0
-    # via octoai-sdk
 click==8.1.7
-    # via
-    #   octoai-sdk
-    #   streamlit
-    #   typer
-    #   uvicorn
+    # via streamlit
 comm==0.2.2
     # via
     #   ipykernel
@@ -87,18 +81,10 @@ defusedxml==0.7.1
     # via nbconvert
 distro==1.9.0
     # via openai
-dnspython==2.6.1
-    # via email-validator
-email-validator==2.1.1
-    # via fastapi
 executing==2.0.1
     # via stack-data
 faiss-cpu==1.8.0
     # via -r requirements.in
-fastapi==0.111.0
-    # via octoai-sdk
-fastapi-cli==0.0.4
-    # via fastapi
 fastjsonschema==2.19.1
     # via nbformat
 filelock==3.14.0
@@ -118,19 +104,16 @@ gitdb==4.0.11
 gitpython==3.1.43
     # via streamlit
 h11==0.14.0
-    # via
-    #   httpcore
-    #   uvicorn
+    # via httpcore
 httpcore==1.0.5
     # via httpx
-httptools==0.6.1
-    # via uvicorn
 httpx==0.27.0
     # via
-    #   fastapi
     #   jupyterlab
-    #   octoai-sdk
+    #   octoai
     #   openai
+httpx-sse==0.4.0
+    # via octoai
 huggingface-hub==0.23.2
     # via
     #   tokenizers
@@ -138,7 +121,6 @@ huggingface-hub==0.23.2
 idna==3.7
     # via
     #   anyio
-    #   email-validator
     #   httpx
     #   jsonschema
     #   requests
@@ -163,7 +145,6 @@ jedi==0.19.1
 jinja2==3.1.4
     # via
     #   altair
-    #   fastapi
     #   jupyter-server
     #   jupyterlab
     #   jupyterlab-server
@@ -179,15 +160,15 @@ jsonpatch==1.33
     # via langchain-core
 jsonpointer==2.4
     # via
-    #   jsonpatch
-    #   jsonschema
-jsonschema[format-nongpl]==4.22.0
-    # via
     #   altair
     #   jupyter-events
     #   jupyterlab-server
     #   nbformat
 jsonschema-specifications==2023.12.1
+    # via
+    #   jsonpatch
+    #   jsonschema
+jsonschema[format-nongpl]==4.22.0
     # via jsonschema
 jupyter==1.0.0
     # via -r requirements.in
@@ -306,22 +287,19 @@ numpy==1.26.4
     #   faiss-cpu
     #   langchain
     #   langchain-community
-    #   octoai-sdk
     #   pandas
     #   pyarrow
     #   pydeck
     #   streamlit
     #   transformers
-octoai-sdk==0.10.1
+octoai==1.0.2
     # via -r requirements.in
 openai==1.30.5
     # via
     #   -r requirements.in
     #   langchain-openai
 orjson==3.10.3
-    # via
-    #   fastapi
-    #   langsmith
+    # via langsmith
 overrides==7.7.0
     # via jupyter-server
 packaging==23.2
@@ -351,9 +329,7 @@ parso==0.8.4
 pexpect==4.9.0
     # via ipython
 pillow==10.3.0
-    # via
-    #   octoai-sdk
-    #   streamlit
+    # via streamlit
 platformdirs==4.2.2
     # via jupyter-core
 prometheus-client==0.20.0
@@ -378,11 +354,10 @@ pycparser==2.22
     # via cffi
 pydantic==2.7.2
     # via
-    #   fastapi
     #   langchain
     #   langchain-core
     #   langsmith
-    #   octoai-sdk
+    #   octoai
     #   openai
 pydantic-core==2.18.3
     # via pydantic
@@ -400,16 +375,9 @@ python-dateutil==2.9.0.post0
     #   arrow
     #   botocore
     #   jupyter-client
-    #   octoai-sdk
     #   pandas
-python-dotenv==1.0.1
-    # via uvicorn
 python-json-logger==2.0.7
     # via jupyter-events
-python-multipart==0.0.9
-    # via
-    #   fastapi
-    #   octoai-sdk
 pytz==2024.1
     # via pandas
 pyyaml==6.0.1
@@ -419,9 +387,7 @@ pyyaml==6.0.1
     #   langchain
     #   langchain-community
     #   langchain-core
-    #   octoai-sdk
     #   transformers
-    #   uvicorn
 pyzmq==26.0.3
     # via
     #   ipykernel
@@ -461,9 +427,7 @@ rfc3986-validator==0.1.1
     #   jsonschema
     #   jupyter-events
 rich==13.7.1
-    # via
-    #   streamlit
-    #   typer
+    # via streamlit
 rpds-py==0.18.1
     # via
     #   jsonschema
@@ -474,8 +438,6 @@ safetensors==0.4.3
     # via transformers
 send2trash==1.8.3
     # via jupyter-server
-shellingham==1.5.4
-    # via typer
 six==1.16.0
     # via
     #   asttokens
@@ -489,8 +451,6 @@ sniffio==1.3.1
     #   anyio
     #   httpx
     #   openai
-soundfile==0.12.1
-    # via octoai-sdk
 soupsieve==2.5
     # via beautifulsoup4
 sqlalchemy==2.0.30
@@ -499,8 +459,6 @@ sqlalchemy==2.0.30
     #   langchain-community
 stack-data==0.6.3
     # via ipython
-starlette==0.37.2
-    # via fastapi
 streamlit==1.35.0
     # via -r requirements.in
 tenacity==8.3.0
@@ -558,46 +516,36 @@ traitlets==5.14.3
     #   qtconsole
 transformers==4.41.2
     # via -r requirements.in
-typer==0.12.3
-    # via fastapi-cli
+types-awscrt==0.20.9
+    # via botocore-stubs
+types-boto3==1.0.2
+    # via octoai
 types-python-dateutil==2.9.0.20240316
     # via arrow
-types-pyyaml==6.0.12.20240311
-    # via octoai-sdk
-types-requests==2.32.0.20240523
-    # via octoai-sdk
+types-s3transfer==0.10.1
+    # via boto3-stubs
 typing-extensions==4.12.0
     # via
-    #   fastapi
+    #   boto3-stubs
     #   huggingface-hub
     #   ipython
+    #   octoai
     #   openai
     #   pydantic
     #   pydantic-core
     #   sqlalchemy
     #   streamlit
-    #   typer
     #   typing-inspect
 typing-inspect==0.9.0
     # via dataclasses-json
 tzdata==2024.1
     # via pandas
-ujson==5.10.0
-    # via fastapi
 uri-template==1.3.0
     # via jsonschema
 urllib3==2.2.1
     # via
     #   botocore
     #   requests
-    #   types-requests
-uvicorn[standard]==0.30.0
-    # via
-    #   fastapi
-    #   octoai-sdk
-
-watchfiles==0.22.0
-    # via uvicorn
 wcwidth==0.2.13
     # via prompt-toolkit
 webcolors==1.13
@@ -608,8 +556,6 @@ webencodings==0.5.1
     #   tinycss2
 websocket-client==1.8.0
     # via jupyter-server
-websockets==12.0
-    # via uvicorn
 widgetsnbextension==4.0.11
     # via ipywidgets
 yarl==1.9.4

@@ -3,7 +3,7 @@ langchain-openai
 langchain
 langchain-text-splitters
 lxml
-octoai-sdk
+octoai
 langchain-community
 faiss-cpu
 tiktoken

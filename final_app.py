@@ -17,9 +17,12 @@ client = OpenAI()
 OCTO_API_KEY = os.getenv("OCTO_API_KEY")
 octoai_client = OctoAI(api_key=OCTO_API_KEY)
 
-st.title("casa.ai")
+st.image("logo-no-background.png", width=300)
 
 if __name__ == "__main__":
+    if "count" not in st.session_state:
+        st.session_state["count"] = 1
+
     if "openai_model" not in st.session_state:
         st.session_state["openai_model"] = "gpt-3.5-turbo"
 
@@ -69,6 +72,9 @@ if __name__ == "__main__":
             #     num_videos=1,
             #     fps=30,
             # )
-            with open("generated_video3.mp4", "rb") as video_file:
+            # display videos
+            vid = "generated_video3.mp4" if st.session_state["count"] == 1 else "generated_video5.mp4"
+            st.session_state["count"] = 2 if st.session_state["count"] == 1 else 1
+            with open(vid, "rb") as video_file:
                 video_bytes = video_file.read()
             st.video(video_bytes)

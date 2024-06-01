@@ -15,7 +15,7 @@ from utils import format_docs, load_knowledge_base, load_llm, load_prompt
 load_dotenv()
 client = OpenAI()
 OCTO_API_KEY = os.getenv("OCTO_API_KEY")
-octoai_client = OctoAI(OCTO_API_KEY)
+octoai_client = OctoAI(api_key=OCTO_API_KEY)
 
 st.title("casa.ai")
 

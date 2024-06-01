@@ -292,6 +292,7 @@ numpy==1.26.4
     #   langchain
     #   langchain-community
     #   octoai-sdk
+    #   pandas
     #   transformers
 octoai-sdk==0.10.1
     # via -r requirements.in
@@ -316,6 +317,8 @@ packaging==23.2
     #   qtconsole
     #   qtpy
     #   transformers
+pandas==2.2.2
+    # via -r requirements.in
 pandocfilters==1.5.1
     # via nbconvert
 parso==0.8.4
@@ -365,6 +368,7 @@ python-dateutil==2.9.0.post0
     #   botocore
     #   jupyter-client
     #   octoai-sdk
+    #   pandas
 python-dotenv==1.0.1
     # via uvicorn
 python-json-logger==2.0.7
@@ -373,6 +377,8 @@ python-multipart==0.0.9
     # via
     #   fastapi
     #   octoai-sdk
+pytz==2024.1
+    # via pandas
 pyyaml==6.0.1
     # via
     #   huggingface-hub
@@ -527,6 +533,8 @@ typing-extensions==4.12.0
     #   typing-inspect
 typing-inspect==0.9.0
     # via dataclasses-json
+tzdata==2024.1
+    # via pandas
 ujson==5.10.0
     # via fastapi
 uri-template==1.3.0

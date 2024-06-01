@@ -1,3 +1,4 @@
+# initial for starwars_faiss.ipynb
 langchain-openai
 langchain
 langchain-text-splitters
@@ -9,3 +10,6 @@ tiktoken
 transformers
 
 jupyter
+
+# for our product
+pandas

@@ -23,9 +23,6 @@ if __name__ == "__main__":
     if "count" not in st.session_state:
         st.session_state["count"] = 1
 
-    if "openai_model" not in st.session_state:
-        st.session_state["openai_model"] = "gpt-3.5-turbo"
-
     if "messages" not in st.session_state:
         st.session_state.messages = []
 

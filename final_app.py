@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 import streamlit as st
 from dotenv import load_dotenv
@@ -13,6 +14,9 @@ from openai import OpenAI
 from utils import format_docs, load_knowledge_base, load_llm, load_prompt
 
 load_dotenv()
+PREGENERATED_VIDEOS_DIR = Path(__file__).resolve().parent / "pregenerated_videos"
+assert PREGENERATED_VIDEOS_DIR.exists()
+
 client = OpenAI()
 OCTO_API_KEY = os.getenv("OCTO_API_KEY")
 octoai_client = OctoAI(api_key=OCTO_API_KEY)
@@ -70,7 +74,9 @@ if __name__ == "__main__":
             #     fps=30,
             # )
             # display videos
-            vid = "generated_video3.mp4" if st.session_state["count"] == 1 else "generated_video5.mp4"
+            vid = PREGENERATED_VIDEOS_DIR / (
+                "generated_video3.mp4" if st.session_state["count"] == 1 else "generated_video5.mp4"
+            )
             st.session_state["count"] = 2 if st.session_state["count"] == 1 else 1
             with open(vid, "rb") as video_file:
                 video_bytes = video_file.read()

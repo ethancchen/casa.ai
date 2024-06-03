@@ -2,12 +2,11 @@ import base64
 
 import requests
 import streamlit as sl
+from basic_app import OCTO_API
 from langchain_community.vectorstores import FAISS
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import OpenAIEmbeddings
-
-from basic_app import OCTO_API
 from utils import format_docs, load_knowledge_base, load_llm, load_prompt
 
 

@@ -14,14 +14,16 @@ from openai import OpenAI
 from utils import format_docs, load_knowledge_base, load_llm, load_prompt
 
 load_dotenv()
-PREGENERATED_VIDEOS_DIR = Path(__file__).resolve().parent / "pregenerated_videos"
+PREGENERATED_VIDEOS_DIR = Path(__file__).resolve().parents[1] / "pregenerated_videos"
+IMAGES_DIR = Path(__file__).resolve().parents[1] / "pregenerated_videos"
 assert PREGENERATED_VIDEOS_DIR.exists()
+assert IMAGES_DIR.exists()
 
 client = OpenAI()
 OCTO_API_KEY = os.getenv("OCTO_API_KEY")
 octoai_client = OctoAI(api_key=OCTO_API_KEY)
 
-st.image("logo-no-background.png", width=300)
+st.image(IMAGES_DIR / "logo-no-background.png", width=300)
 
 if __name__ == "__main__":
     if "count" not in st.session_state:

@@ -30,7 +30,7 @@ if __name__ == "__main__":
         st.session_state["count"] = 1
 
     if "messages" not in st.session_state:
-        st.session_state.messages = []
+        st.session_state["messages"] = []
 
     if "knowledge_base" not in st.session_state:
         st.session_state["knowledge_base"] = load_knowledge_base()
@@ -41,12 +41,12 @@ if __name__ == "__main__":
     if "prompt" not in st.session_state:
         st.session_state["prompt"] = load_prompt()
 
-    for message in st.session_state.messages:
+    for message in st.session_state["messages"]:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
     if prompt := st.chat_input("What is up?"):
-        st.session_state.messages.append({"role": "user", "content": prompt})
+        st.session_state["messages"].append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
 
@@ -64,7 +64,7 @@ if __name__ == "__main__":
             )
 
             response = rag_chain.invoke(prompt)
-            st.session_state.messages.append({"role": "assistant", "content": response})
+            st.session_state["messages"].append({"role": "assistant", "content": response})
             st.markdown(response)
             # video_gen_response = octoai_client.image_gen.generate_svd(
             #     image=encoded_img(),

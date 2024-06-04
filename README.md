@@ -1,6 +1,6 @@
 # Casa.ai
 
-Your home-finding companion tailoring properties to suit your needs. This chatbot is able to take in questions about the desired location, duration, budget, amenities, neighborhood, etc. then personalize those results accordingly using Retrieval-Augmented Generation (RAG).
+Your home-finding companion, tailoring properties to suit your needs. This chatbot is able to take in questions about the desired location, duration, budget, amenities, neighborhood, etc. then personalize those results accordingly using Retrieval-Augmented Generation (RAG).
 
 ## How does it function?
 
@@ -8,6 +8,10 @@ Describe what you are seeking in your ideal home to our virtual property concier
 The model will then look at existing catalogs to help you find the most optimal option depending upon your needs!
 
 ## What impacts does it bring?
+
+- Streamlines an exhaustive search process down to a fraction of the time
+- Drives significant increase in trasactional frequency between providers and customers
+- Propels innovation in the housing search market by injecting competition 
 
 ## Tech stack used
 
